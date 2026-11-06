@@ -1,17 +1,19 @@
 schema_version: 1
 
 context:
-  name: lbdevtools
   version: "2.1.8"
   python_min: '3.12'
 
 package:
-  name: ${{ name|lower }}
+  name: lbdevtools
   version: ${{ version }}
 
 source:
   url: https://pypi.org/packages/source/l/lbdevtools/lbdevtools-${{ version }}.tar.gz
   sha256: 5064669ef524491e861f33cbe35019bcb25f3a2bf604e06c201bfe9f6fc4c228
+  patches:
+    # https://gitlab.cern.ch/lhcb-core/LbDevTools/-/merge_requests/231
+    - patches/0001-Drop-six-and-gitdb2-dependencies.patch
 
 build:
   number: 0
@@ -42,7 +44,6 @@ requirements:
     - setuptools
     - setuptools_scm
   run:
-    - gitdb2
     - gitpython
     - jinja2
     - lbenv >=0.3.0
@@ -50,12 +51,10 @@ requirements:
     - libcst
     - python >=${{ python_min }}
     - python-gitlab
-    - six
     - whichcraft
     - yapf ==0.24.0
     - git
     - glimpse
-    - setuptools
 
 tests:
   - python:
