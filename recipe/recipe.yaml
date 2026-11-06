@@ -33,6 +33,7 @@ build:
       - git-lb-push=LbDevTools.GitTools.push:main
       - git-lb-clone-pkg=LbDevTools.GitTools.clone_pkg:main
       - git-lb-reset-mtime=LbDevTools.GitTools.reset_mtime:main
+      - lb-wrap-pid-conditions=LbDevTools.wrap_pid_conditions:main
 
 requirements:
   host:
@@ -46,6 +47,7 @@ requirements:
     - jinja2
     - lbenv >=0.3.0
     - lbplatformutils
+    - libcst
     - python >=${{ python_min }}
     - python-gitlab
     - six
@@ -80,6 +82,7 @@ tests:
       - git-lb-push --help
       - git-lb-clone-pkg --help
       - git-lb-reset-mtime --help
+      - lb-wrap-pid-conditions --help
 
 about:
   summary: LHCb development tools
